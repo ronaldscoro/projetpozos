@@ -1,0 +1,17 @@
+version: "3.1"
+services:
+ website:
+         image: php:apache
+         depends_on:
+           - API
+         environment:
+           - USERNAME=toto
+           - PASSWORD=python
+         volumes:
+           - ./website:/var/www/html
+         ports:
+           - "8080:80"
+ API:
+         image: pozos:v10
+         volumes:
+           - ./api/student_age.json:/data/student_age.json
